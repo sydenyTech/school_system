@@ -13,12 +13,14 @@ const LoginPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    const role = user?.publicMetadata.role;
-
+    if (!isLoaded) return;
+  
+    const role = user?.publicMetadata?.role;
     if (role) {
       router.push(`/${role}`);
     }
-  }, [user, router]);
+  }, [isLoaded, user, router]);
+  
 
   return (
     <div className="h-screen flex items-center justify-center bg-lamaSkyLight">
